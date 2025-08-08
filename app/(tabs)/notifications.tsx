@@ -1,31 +1,16 @@
 import { LogoHeader } from "@/components/ui/LogoHeader";
-import { SearchInput } from "@/components/ui/SearchInput";
-import React, { useState } from "react";
-import {
-  Keyboard,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-} from "react-native";
+import React from "react";
+import { SafeAreaView, StyleSheet, Text } from "react-native";
 
-export default function HomeScreen() {
-  const [searchTerm, setSearchTerm] = useState("");
-
+export default function NotificationsScreen() {
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <>
+      <LogoHeader />
       <SafeAreaView style={styles.container}>
-        <LogoHeader />
-        <SearchInput
-          showIcon={true}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-        />
-
         <Text style={styles.title}>Welcome to Receipt Splitter</Text>
         <Text style={styles.subtitle}>Split your receipts with ease</Text>
       </SafeAreaView>
-    </TouchableWithoutFeedback>
+    </>
   );
 }
 

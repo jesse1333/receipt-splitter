@@ -3,7 +3,8 @@ import NotificationsIcon from "@/assets/icons/NotificationsIcon";
 import PaymentsIcon from "@/assets/icons/PaymentsIcon";
 import ProfileIcon from "@/assets/icons/ProfileIcon";
 import * as Haptics from "expo-haptics";
-import React, { useState } from "react";
+import { usePathname, useRouter } from "expo-router";
+import React from "react";
 import {
   Pressable,
   StyleProp,
@@ -13,14 +14,22 @@ import {
 } from "react-native";
 
 export const BottomNav = (style: StyleProp<ViewStyle>) => {
-  const [selected, setSelected] = useState(0);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const buttons = [
-    { Icon: HomeIcon, index: 0 },
-    { Icon: PaymentsIcon, index: 1 },
-    { Icon: NotificationsIcon, index: 2 },
-    { Icon: ProfileIcon, index: 3 },
+    { Icon: HomeIcon, index: 0, route: "/" as const },
+    { Icon: PaymentsIcon, index: 1, route: "/payments" as const },
+    { Icon: NotificationsIcon, index: 2, route: "/notifications" as const },
+    { Icon: ProfileIcon, index: 3, route: "/profile" as const },
   ];
+
+  const getSelectedIndex = () => {
+    const currentButton = buttons.find(btn => btn.route === pathname);
+    return currentButton ? currentButton.index : 0;
+  };
+
+  const selected = getSelectedIndex();
 
   return (
     <View style={styles.NavContainer}>
@@ -34,7 +43,7 @@ export const BottomNav = (style: StyleProp<ViewStyle>) => {
             key={idx}
             style={styles.NavButton}
             onPress={() => {
-              setSelected(idx);
+              router.navigate(btn.route);
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
             }}>
             <View style={styles.IconWrapper}>
