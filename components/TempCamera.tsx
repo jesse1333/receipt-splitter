@@ -1,9 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export const TempCamera = () => {
   return (
     <View style={styles.container}>
-      <Text style={{ color: "white" }}>Hello</Text>
     </View>
   );
 };

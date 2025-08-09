@@ -1,14 +1,15 @@
 import { LogoHeader } from "@/components/ui/LogoHeader";
+import InterFont from "@/components/util/InterFont";
 import React from "react";
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 
 export default function NotificationsScreen() {
   return (
     <>
       <LogoHeader />
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Welcome to Receipt Splitter</Text>
-        <Text style={styles.subtitle}>Split your receipts with ease</Text>
+        <InterFont style={styles.title}>Welcome to Receipt Splitter</InterFont>
+        <InterFont style={styles.subtitle}>Split your receipts with ease</InterFont>
       </SafeAreaView>
     </>
   );

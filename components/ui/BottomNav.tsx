@@ -32,7 +32,7 @@ export const BottomNav = (style: StyleProp<ViewStyle>) => {
   const selected = getSelectedIndex();
 
   return (
-    <View style={styles.NavContainer}>
+    <View style={styles.navContainer}>
       {buttons.map((btn, idx) => {
         const isSelected = selected === idx;
         const color = isSelected ? "#02A130" : "#737373";
@@ -41,14 +41,14 @@ export const BottomNav = (style: StyleProp<ViewStyle>) => {
         return (
           <Pressable
             key={idx}
-            style={styles.NavButton}
+            style={styles.navButton}
             onPress={() => {
               router.navigate(btn.route);
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
             }}>
-            <View style={styles.IconWrapper}>
+            <View style={styles.iconWrapper}>
               <IconComponent color={color} />
-              {isSelected && <View style={styles.GreenOverlay} />}
+              {isSelected && <View style={styles.greenOverlay} />}
             </View>
           </Pressable>
         );
@@ -58,7 +58,7 @@ export const BottomNav = (style: StyleProp<ViewStyle>) => {
 };
 
 const styles = StyleSheet.create({
-  NavContainer: {
+  navContainer: {
     flexDirection: "row",
     backgroundColor: "white",
     position: "absolute",
@@ -70,11 +70,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 
-  NavButton: {
+  navButton: {
     padding: 6,
   },
 
-  IconWrapper: {
+  iconWrapper: {
     position: "relative",
     borderRadius: 999,
     padding: 10,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  GreenOverlay: {
+  greenOverlay: {
     position: "absolute",
     top: 0,
     bottom: 0,

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#6565651C",
     borderRadius: 11,
     height: 50,
-    width: "90%",
+    width: "85%",
     paddingHorizontal: 13,
   },
 
@@ -46,5 +46,6 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%",
     padding: 0,
+    fontFamily: "Inter",
   },
 });

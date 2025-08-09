@@ -1,3 +1,4 @@
+import { CustomTabs } from "@/components/ui/CustomTabs";
 import { LogoHeader } from "@/components/ui/LogoHeader";
 import { SearchInput } from "@/components/ui/SearchInput";
 import React, { useState } from "react";
@@ -5,26 +6,34 @@ import {
   Keyboard,
   SafeAreaView,
   StyleSheet,
-  Text,
   TouchableWithoutFeedback,
+  View,
 } from "react-native";
 
 export default function HomeScreen() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentTab, setCurrentTab] = useState(0);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <SafeAreaView style={styles.container}>
+      <View style={{ flex: 1 }}>
         <LogoHeader />
-        <SearchInput
-          showIcon={true}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-        />
+        <SafeAreaView style={styles.container}>
+          <View style={{ paddingTop: 30 }}>
+            <SearchInput
+              showIcon={true}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
 
-        <Text style={styles.title}>Welcome to Receipt Splitter</Text>
-        <Text style={styles.subtitle}>Split your receipts with ease</Text>
-      </SafeAreaView>
+            <CustomTabs
+              tabs={["Bill history", "Current trips"]}
+              tabIndex={currentTab}
+              setTabIndex={setCurrentTab}
+            />
+          </View>
+        </SafeAreaView>
+      </View>
     </TouchableWithoutFeedback>
   );
 }
@@ -33,20 +42,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F5F5",
-    justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 8,
-    textAlign: "center",
-  },
-  subtitle: {
-    fontSize: 16,
-    color: "#666",
-    textAlign: "center",
   },
 });
